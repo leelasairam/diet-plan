@@ -51,7 +51,8 @@ async function GetInfo(id){
 <template>
 
 <div class="header">
-  <p><strong>Diet-Plan</strong> <span v-loading="load"></span></p>
+  <p><strong>Diet-Plan</strong></p>
+  <h1><span v-loading="load"></span></h1>
 </div>
 <div class="header">
   <el-button type="primary" @click="dialogVisible=true" id="header-action" size="small" v-if="dialogVisible==false">Open Diet Plan</el-button><br/>
