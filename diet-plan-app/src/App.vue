@@ -52,9 +52,8 @@ async function GetInfo(id){
 
 <div class="header">
   <p><strong>Diet-Plan</strong></p>
-  <h1><span v-loading="load"></span></h1>
 </div>
-<div class="header">
+<div class="header1">
   <el-button type="primary" @click="dialogVisible=true" id="header-action" size="small" v-if="dialogVisible==false">Open Diet Plan</el-button><br/>
 </div>
 
@@ -93,7 +92,7 @@ async function GetInfo(id){
         <p><strong>{{ j.title }}</strong></p>
         <el-tag class="ml-2" type="info">{{ j.readyInMinutes }} mins</el-tag>
         <el-tag class="ml-2" type="warning">{{ j.servings }} servings</el-tag>
-        <br/><el-button @click="GetInfo(j.id)" type="success" plain class="button c-btn">View</el-button>
+        <br/><el-button @click="GetInfo(j.id)" type="success" plain class="button c-btn">{{ load ? 'loading...' : 'View' }}</el-button>
       </el-card>
     </div>
   </div>
@@ -107,7 +106,7 @@ async function GetInfo(id){
           <p><strong>{{ x.title }}</strong></p>
           <el-tag class="ml-2" type="info">{{ x.readyInMinutes }} mins</el-tag>
           <el-tag class="ml-2" type="warning">{{ x.servings }} servings</el-tag>
-          <br/><el-button @click="GetInfo(x.id)" type="success"  plain v-loading="load" class="button c-btn">View</el-button>
+          <br/><el-button @click="GetInfo(x.id)" type="success"  plain class="button c-btn">{{ load ? 'loading...' : 'View' }}</el-button>
       </el-card>
     </div>
   </div>
@@ -132,6 +131,15 @@ input, select{
   color: white;
   padding: 0.2rem;
   text-align: center;
+}
+
+.header1{
+  background-color: white;
+  color: black;
+  padding: 0.2rem;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  margin-top: 0.2rem;
 }
 
 .grid { 
