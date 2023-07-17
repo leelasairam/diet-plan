@@ -28,7 +28,7 @@ async function GetDiets(){
     const res = await fetch(url.value);
     const data = await res.json();
     if(inputs.value.timeFrame==='week'){
-      plans.value = data.week;
+      plans.value = data?.week;
     }
     else{
       plans.value = data;
@@ -45,7 +45,7 @@ async function GetInfo(id){
   const url = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`;
   const res = await fetch(url);
   const data = await res.json();
-  plan.value = data[0].steps;
+  plan.value = data[0]?.steps;
   recipeid.value = id;
   ShowInfo.value = true;
   load.value = false;
