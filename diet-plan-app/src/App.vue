@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import {ref,provide} from 'vue'
 import PlanInfo from './components/PlanInfo.vue'
 
 const dialogVisible = ref(true);
@@ -10,7 +10,10 @@ const plans = ref({});
 const apiKey = import.meta.env.VITE_ApiKey;
 const plan = ref([]);
 const ShowInfo = ref(false);
-const load = ref(false)
+const load = ref(false);
+const recipeid = ref('');
+
+provide('rid', recipeid)
 
 async function GetDiets(){
   if(inputs.value.timeFrame){
@@ -43,6 +46,7 @@ async function GetInfo(id){
   const res = await fetch(url);
   const data = await res.json();
   plan.value = data[0].steps;
+  recipeid.value = id;
   ShowInfo.value = true;
   load.value = false;
 }
@@ -51,7 +55,7 @@ async function GetInfo(id){
 <template>
 
 <div class="header">
-  <p><strong>Diet-Plan</strong></p>
+  <p><strong>Plan-Diet</strong></p>
 </div>
 <div class="header1">
   <el-button type="primary" @click="dialogVisible=true" id="header-action" size="small" v-if="dialogVisible==false">Open Diet Plan</el-button><br/>

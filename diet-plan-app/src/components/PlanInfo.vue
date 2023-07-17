@@ -1,5 +1,6 @@
 <script setup>
     import {ref} from 'vue'
+    import RecipeWidget from './RecipeWidget.vue';
     const props = defineProps({
         plandata: Array
     })
@@ -35,7 +36,10 @@
                 </div>
             </template>
         </div>
-        <el-button type="danger" @click="Close">Close</el-button>
+        <br/>
+        <div>
+            <RecipeWidget />
+        </div>
     </el-dialog>
 
 
